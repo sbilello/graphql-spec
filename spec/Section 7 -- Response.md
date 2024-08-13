@@ -35,6 +35,41 @@ Note: When `errors` is present in the response, it may be helpful for it to
 appear first when serialized to make it more clear when errors are present in a
 response during debugging.
 
+For example the response for a rate limit feature might look like this:
+
+```json example
+{
+ "data": {
+    "hero": {
+      "name": "R2-D2",
+      "heroFriends": [
+        {
+          "id": "1000",
+          "name": "Luke Skywalker"
+        },
+        {
+          "id": "1002",
+          "name": null
+        },
+        {
+          "id": "1003",
+          "name": "Leia Organa"
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "rateLimit": {
+      "requestRate": 2,
+      "remaining": 98,
+      "retryAfterMs": 0,
+      "resetAfterMs": 1985
+    }
+  }
+}
+```
+
+
 ### Data
 
 The `data` entry in the response will be the result of the execution of the
